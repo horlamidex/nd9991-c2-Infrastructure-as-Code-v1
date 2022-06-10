@@ -10,4 +10,4 @@ Students may use a JSON file for increasing the generic nature of the YAML code.
 
 In YAML code, the `${EnvironmentName}` would be substituted with `UdacityProject` accordingly.
 
-[Load Balancer Url](http://udagr-udagr-181an58ctbht9-1134220269.us-east-1.elb.amazonaws.com/)
+[Load Balancer Url](http://udagr-udagr-rtftk4qe79ca-1995071572.us-east-1.elb.amazonaws.com/)
