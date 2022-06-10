@@ -2,5 +2,13 @@
 	{
 		"ParameterKey": "EnvironmentName",
 		"ParameterValue": "UdacityProject"
+	},
+	{
+		"ParameterKey": "UdagramKey",
+		"ParameterValue": "BastionHostKey"
+	},
+	{
+		"ParameterKey": "BastionHostKey",
+		"ParameterValue": "UdagramKey"
 	}
 ]
