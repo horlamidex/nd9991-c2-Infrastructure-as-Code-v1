@@ -6,34 +6,33 @@ Parameters:
   EnvironmentName:
     Description: "Udagram Environment Name"
     Type: "String"
-    Default: "KeyPair"
 
-  UdagramKey:
-    Type: "AWS::SSM::Parameter::Value<String>"
-    Description: "Instances SSH key"
-    Default: "KeyPair"
+  # UdagramKey:
+  #   Type: "AWS::SSM::Parameter::Value<String>"
+  #   Description: "Instances SSH key"
+  #   Default: "KeyPair"
 
-  BastionHostKey:
-    Type: "AWS::SSM::Parameter::Value<String>"
-    Description: "BastionHost SSH key"
+  # BastionHostKey:
+  #   Type: "AWS::SSM::Parameter::Value<String>"
+  #   Description: "BastionHost SSH key"
 
 Resources:
-  BastionSecGroup:
-    Type: "AWS::EC2::SecurityGroup"
-    Properties:
-      GroupDescription: "BastionHost Security Group"
-      VpcId:
-        Fn::ImportValue: !Sub "${EnvironmentName}-VPCID"
-      SecurityGroupIngress:
-      - IpProtocol: "tcp"
-        FromPort: 22
-        ToPort: 22
-        CidrIp: 0.0.0.0/0
-      SecurityGroupEgress:
-      - IpProtocol: "tcp"
-        FromPort: 0
-        ToPort: 65535
-        CidrIp: 0.0.0.0/0
+  # BastionSecGroup:
+  #   Type: "AWS::EC2::SecurityGroup"
+  #   Properties:
+  #     GroupDescription: "BastionHost Security Group"
+  #     VpcId:
+  #       Fn::ImportValue: !Sub "${EnvironmentName}-VPCID"
+  #     SecurityGroupIngress:
+  #     - IpProtocol: "tcp"
+  #       FromPort: 22
+  #       ToPort: 22
+  #       CidrIp: 0.0.0.0/0
+  #     SecurityGroupEgress:
+  #     - IpProtocol: "tcp"
+  #       FromPort: 0
+  #       ToPort: 65535
+  #       CidrIp: 0.0.0.0/0
 
   LBSecurityGroup:
     Type: "AWS::EC2::SecurityGroup"
@@ -168,19 +167,19 @@ Resources:
           Fn::Sub: "${EnvironmentName}-VPCID"
     
 
-  BastionHostJumpBox:
-    Type: AWS::EC2::Instance
-    Properties:
-      InstanceType: t3.micro
-      ImageId: "ami-0022f774911c1d690"
-      KeyName: !Ref "BastionHostKey"
-      SubnetId:
-        Fn::ImportValue: !Sub "${EnvironmentName}-PUB1-SN"
-      SecurityGroupIds:
-      - !Ref BastionSecGroup
-      Tags:
-        - Key: Name
-          Value: !Sub "${EnvironmentName}-BastionHost"
+  # BastionHostJumpBox:
+  #   Type: AWS::EC2::Instance
+  #   Properties:
+  #     InstanceType: t3.micro
+  #     ImageId: "ami-0022f774911c1d690"
+  #     KeyName: !Ref "BastionHostKey"
+  #     SubnetId:
+  #       Fn::ImportValue: !Sub "${EnvironmentName}-PUB1-SN"
+  #     SecurityGroupIds:
+  #     - !Ref BastionSecGroup
+  #     Tags:
+  #       - Key: Name
+  #         Value: !Sub "${EnvironmentName}-BastionHost"
   # instace profile contains the IAM Role name(s) that we want to associate to our auto scaling EC2 Servers
   # never give too much permissions to your EC2 instances! if they get hacked, the permissions get hacked also!
   # in this example, I create a Role called UdacityS3ReadOnlyC2 and just give it a policy of S3 Read-Only Access
