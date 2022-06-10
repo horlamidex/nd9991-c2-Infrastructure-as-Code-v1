@@ -106,7 +106,6 @@ Resources:
       AssociatePublicIpAddress: true
       ImageId: "ami-09d56f8956ab235b3"
       InstanceType: "t3.small"
-      KeyName: !Ref "UdagramKey"
       SecurityGroups:
       - !Ref ServerSecurityGroup
       BlockDeviceMappings:
