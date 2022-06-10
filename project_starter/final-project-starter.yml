@@ -172,7 +172,6 @@ Resources:
   #   Properties:
   #     InstanceType: t3.micro
   #     ImageId: "ami-0022f774911c1d690"
-  #     KeyName: !Ref "BastionHostKey"
   #     SubnetId:
   #       Fn::ImportValue: !Sub "${EnvironmentName}-PUB1-SN"
   #     SecurityGroupIds:
